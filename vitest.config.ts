@@ -1,15 +1,15 @@
-import { defineConfig } from 'vitest/config';
+/// <reference types="vitest" /> // Добавляем поддержку типов Vitest
+import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-    plugins: [react()],
+    plugins: [react()], // Подключаем React-плагин Vite
     test: {
-        environment: 'jsdom',
-        globals: true,
-        setupFiles: './src/setupTests.ts',
+        // Основные настройки Vitest
+        environment: 'jsdom', // Окружение для тестов (эмулирует браузер)
+        globals: true,        // Глобальные переменные (describe, it, expect без импортов)
+        setupFiles: './src/tests/setup.ts', // (опционально) Файл с глобальными настройками
+        include: ['**/*.{test,spec}.{ts,tsx}'], // Где искать тесты
+        exclude: ['node_modules', 'dist'], // Что исключить
     },
 });
-
-// среда: 'jsdom': Имитирует среду браузера для тестирования.
-// globals: true: Позволяет использовать глобальные переменные, такие как describe, it, expect, без их импорта.
-// setupFiles: файл для настройки тестовых конфигураций, аналогичный Jest'у setupFilesAfterEnv.
