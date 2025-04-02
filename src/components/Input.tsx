@@ -1,5 +1,5 @@
 export default function Input() {
     return (
-        <input type="text" placeholder='Введите текст...' />
+        <input id="text" type="text" placeholder='Введите текст...' />
     )
 }
